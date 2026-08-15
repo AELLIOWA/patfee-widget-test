@@ -29,9 +29,9 @@
       document.documentElement.lang = lang === "cn" ? "zh-CN" : lang === "jp" ? "ja" : lang;
 
       const script = document.createElement("script");
-      script.src = "https://sandbox.patent-cost-simulator.legal4pro.com/widget/v1.js";
+      script.src = "https://patent-cost-simulator.legal4pro.com/widget/v1.js";
       script.async = true;
-      script.onload = () => { document.getElementById("state").textContent = "Widget charge depuis le staging Patfee."; };
+      script.onload = () => { document.getElementById("state").textContent = "Widget Patfee charge."; };
       script.onerror = () => { document.getElementById("state").textContent = "Echec du chargement du script du widget."; };
       document.body.appendChild(script);
     </script>
