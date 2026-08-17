@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Hote de test du widget Patfee — staging</title>
+    <style>
+      html { color-scheme: light dark; }
+      body { margin: 0; background: #f4f7fb; font-family: Arial, sans-serif; }
+      main { width: min(1180px, 100%); margin: 0 auto; padding: 16px; box-sizing: border-box; }
+      #state { margin: 0 0 12px; color: #4b5563; font-size: 13px; }
+      patent-cost-simulator { display: block; width: 100%; max-width: 100%; min-height: 720px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p id="state" role="status">Chargement du parcours embarque staging...</p>
+      <patent-cost-simulator data-width="100%" data-height="720"></patent-cost-simulator>
+    </main>
+    <script>
+      const query = new URLSearchParams(location.search);
+      const widgetId = query.get("widgetId") || "";
+      const lang = query.get("lang") || "fr";
+      const theme = query.get("theme") || "auto";
+      const host = document.querySelector("patent-cost-simulator");
+      host.setAttribute("data-widget-id", widgetId);
+      host.setAttribute("data-language", lang);
+      host.setAttribute("data-theme", theme);
+      document.documentElement.lang = lang === "cn" ? "zh-CN" : lang === "jp" ? "ja" : lang;
+
+      const script = document.createElement("script");
+      script.src = "https://sandbox.patent-cost-simulator.legal4pro.com/widget/v1.js";
+      script.async = true;
+      script.onload = () => { document.getElementById("state").textContent = "Widget charge depuis le staging Patfee."; };
+      script.onerror = () => { document.getElementById("state").textContent = "Echec du chargement du widget staging."; };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
