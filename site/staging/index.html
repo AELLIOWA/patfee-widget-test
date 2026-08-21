@@ -10,43 +10,21 @@
       body { margin: 0; background: #f4f7fb; font-family: Arial, sans-serif; }
       main { width: min(1180px, 100%); margin: 0 auto; padding: 16px; box-sizing: border-box; }
       #state { margin: 0 0 12px; color: #4b5563; font-size: 13px; }
-      #widget-shell { width: 100%; height: 720px; min-height: 720px; contain: layout paint size; overflow: hidden; }
       patent-cost-simulator { display: block; width: 100%; max-width: 100%; height: 720px; min-height: 720px; }
     </style>
   </head>
   <body>
     <main>
       <p id="state" role="status">Widget chargé depuis le staging Patfee.</p>
-      <div id="widget-shell" aria-busy="true"></div>
-      <script>
-        const query = new URLSearchParams(location.search);
-        const requestedWidgetId = query.get("widgetId") || "";
-        const widgetId = /^[a-f0-9]{32}$/.test(requestedWidgetId)
-          ? requestedWidgetId
-          : "72f262ecacdd5064fdc8ea62ff2b6cff";
-        const requestedLang = query.get("lang") || "fr";
-        const lang = ["fr", "en", "de", "cn", "jp"].includes(requestedLang) ? requestedLang : "fr";
-        const requestedTheme = query.get("theme") || "auto";
-        const theme = ["light", "dark", "auto"].includes(requestedTheme) ? requestedTheme : "auto";
-        window.patfeeWidgetReference = { widgetId, lang, theme };
-        document.documentElement.lang = lang === "cn" ? "zh-CN" : lang === "jp" ? "ja" : lang;
-      </script>
       <script src="https://sandbox.patent-cost-simulator.legal4pro.com/widget/v1.js?v=20260821-165"></script>
-      <script>
-        {
-          const config = window.patfeeWidgetReference;
-          const host = document.createElement("patent-cost-simulator");
-          host.setAttribute("data-widget-id", config.widgetId);
-          host.setAttribute("data-language", config.lang);
-          host.setAttribute("data-theme", config.theme);
-          host.setAttribute("data-width", "100%");
-          host.setAttribute("data-height", "720");
-          host.setAttribute("style", "display:block; width:100%; max-width:100%; height:720px; min-height:720px");
-          const shell = document.getElementById("widget-shell");
-          shell.appendChild(host);
-          shell.removeAttribute("aria-busy");
-        }
-      </script>
+      <patent-cost-simulator
+        data-widget-id="72f262ecacdd5064fdc8ea62ff2b6cff"
+        data-language="fr"
+        data-theme="auto"
+        data-width="100%"
+        data-height="720"
+        style="display:block; width:100%; max-width:100%; height:720px; min-height:720px"
+      ></patent-cost-simulator>
     </main>
   </body>
 </html>
