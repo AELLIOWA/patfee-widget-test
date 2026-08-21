@@ -3,3 +3,12 @@
 Static, noindex page used only to verify that the Patfee widget works from an
 authorized third-party origin. It contains no secret, business data or Patfee
 calculation code.
+
+Published reference pages:
+
+- Production: `https://aelliowa.github.io/patfee-widget-test/`
+- Staging: `https://aelliowa.github.io/patfee-widget-test/staging/`
+
+The staging page includes the dedicated audit widget by default. Both pages
+reserve 720 pixels before loading the widget script so Lighthouse measures the
+integration without an artificial layout shift.
