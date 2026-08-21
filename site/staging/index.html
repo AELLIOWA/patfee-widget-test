@@ -33,17 +33,19 @@
       </script>
       <script src="https://sandbox.patent-cost-simulator.legal4pro.com/widget/v1.js?v=20260821-165"></script>
       <script>
-        const { widgetId, lang, theme } = window.patfeeWidgetReference;
-        const host = document.createElement("patent-cost-simulator");
-        host.setAttribute("data-widget-id", widgetId);
-        host.setAttribute("data-language", lang);
-        host.setAttribute("data-theme", theme);
-        host.setAttribute("data-width", "100%");
-        host.setAttribute("data-height", "720");
-        host.setAttribute("style", "display:block; width:100%; max-width:100%; height:720px; min-height:720px");
-        const shell = document.getElementById("widget-shell");
-        shell.appendChild(host);
-        shell.removeAttribute("aria-busy");
+        {
+          const config = window.patfeeWidgetReference;
+          const host = document.createElement("patent-cost-simulator");
+          host.setAttribute("data-widget-id", config.widgetId);
+          host.setAttribute("data-language", config.lang);
+          host.setAttribute("data-theme", config.theme);
+          host.setAttribute("data-width", "100%");
+          host.setAttribute("data-height", "720");
+          host.setAttribute("style", "display:block; width:100%; max-width:100%; height:720px; min-height:720px");
+          const shell = document.getElementById("widget-shell");
+          shell.appendChild(host);
+          shell.removeAttribute("aria-busy");
+        }
       </script>
     </main>
   </body>
